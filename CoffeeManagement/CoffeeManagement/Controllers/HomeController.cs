@@ -6,10 +6,20 @@ using System.Web.Mvc;
 
 namespace CoffeeManagement.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AuthorizeController
     {
         // GET: Home
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult QuanLyTongQuan()
+        {
+            return View();
+        }
+
+        public ActionResult QuanLyNhanVien()
         {
             return View();
         }
