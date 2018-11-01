@@ -220,8 +220,16 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\nice-select.css" />
     <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\image\avatar-blank.jpg" />
+    <Content Include="Content\image\background.png" />
+    <Content Include="Content\image\coffee.png" />
+    <Content Include="Content\image\logo.png" />
+    <Content Include="Content\image\table.png" />
+    <Content Include="Content\img\avatar-blank.jpg" />
     <Content Include="Content\img\b1.jpg" />
     <Content Include="Content\img\b2.jpg" />
+    <Content Include="Content\img\background.png" />
+    <Content Include="Content\img\coffee.png" />
     <Content Include="Content\img\footer-bg.jpg" />
     <Content Include="Content\img\g1.jpg" />
     <Content Include="Content\img\g2.jpg" />
@@ -235,6 +243,7 @@
     <Content Include="Content\img\r1.png" />
     <Content Include="Content\img\r2.png" />
     <Content Include="Content\img\signature.png" />
+    <Content Include="Content\img\table.png" />
     <Content Include="Content\img\video-bg.jpg" />
     <Content Include="Content\kendo\2017.3.1026\Black\editor.png" />
     <Content Include="Content\kendo\2017.3.1026\Black\imagebrowser.png" />
@@ -1000,6 +1009,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\QuanLyTongQuan.cshtml" />
     <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
+    <Content Include="Views\Home\QuanLyKhachHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1007,7 +1017,6 @@
     <Folder Include="Content\css\bootstrap\" />
     <Folder Include="Content\css\theme\" />
     <Folder Include="Content\dist\" />
-    <Folder Include="Content\image\" />
     <Folder Include="Content\img\elements\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="Views\Authorize\" />

@@ -1,0 +1,73 @@
+﻿@model List<CoffeeManagement.Models.Customer>
+@{
+    ViewBag.Title = "QuanLyKhachHang";
+}
+<div class="content-wrapper">
+    <section class="content-header" style="padding-top: 0">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    Quản lý khách hàng
+                    <small>tháng 1 năm 2019</small>
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group" style="margin-top: 20px;">
+                    <input type="text" name="q" class="form-control" placeholder="Nhập mã/tên khách hàng">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-block btn-info" style="margin-top: 20px;" data-toggle="modal" data-target="#modal-create">Thêm mới</button>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+
+                @foreach (var c in Model)
+                {
+                    <!-- Widget: user widget style 1 -->
+                    <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-yellow">
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="~Content/image/avatar-blank.jpg" alt="User Avatar">
+                            </div>
+                            <!-- /.widget-user-image -->
+                            <h3 class="widget-user-username">KH0711</h3>
+                            <h5 class="widget-user-desc">@c.Name</h5>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-stacked">
+                                <li><a href="#">Ngày sinh: <span class="pull-right">@c.Birthday</span></a></li>
+                                <li><a href="#">SĐT: <span class="pull-right">@c.Tel</span></a></li>
+                                <li><a href="#">Email: <span class="pull-right">@c.Email</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="box-footer text-center">
+                            <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
+                        </div>
+                    </div>
+                <!-- /.widget-user -->
+                }
+                
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>
+

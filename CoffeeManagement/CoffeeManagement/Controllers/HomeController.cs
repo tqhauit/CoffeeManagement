@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,16 @@ namespace CoffeeManagement.Controllers
 
         public ActionResult QuanLyNhanVien()
         {
-            return View();
+            CoffeeShopDBEntities db = new CoffeeShopDBEntities();
+            List<Employee> employeeList = db.Employees.ToList();
+            return View(employeeList);
+        }
+
+        public ActionResult QuanLyKhachHang()
+        {
+            CoffeeShopDBEntities db = new CoffeeShopDBEntities();
+            List<Customer> customerList = db.Customers.ToList();
+            return View(customerList);
         }
     }
 }
