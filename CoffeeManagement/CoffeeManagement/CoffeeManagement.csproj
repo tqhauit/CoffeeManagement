@@ -200,6 +200,7 @@
     <Compile Include="Models\Timekeeping.cs">
       <DependentUpon>CoffeeShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\Warehouse.cs">
       <DependentUpon>CoffeeShopModel.tt</DependentUpon>
     </Compile>

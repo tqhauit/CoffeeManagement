@@ -1,4 +1,4 @@
-﻿@model List<CoffeeManagement.Models.Employee>
+﻿@model CoffeeManagement.Models.UserViewModel
 @{
     ViewBag.Title = "QuanLyNhanVien";
 }
@@ -29,7 +29,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-3">
-                @foreach (var e in Model)
+                @foreach (var e in Model.listEmployee)
                 {
                     <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -72,4 +72,269 @@
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
 </footer>
+<!--Modal them moi-->
+<div class="modal fade" id="modal-create">
+    <div class="modal-dialog" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+        @using (Html.BeginForm("AddEmployee", "Home", FormMethod.Post))
+        {
+            <div class="modal-content" style="border-radius:5px;">
+                <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">THÊM MỚI NHÂN VIÊN</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="box" style="border: 2px solid #ccc;">
 
+                                <div class="box-body">
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Họ và tên
+                                        </span>
+                                        @Html.TextBoxFor(model => model.employee.Name,new { @class = "form-control",placeholder="Họ và tên" })
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Ngày sinh
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="DD/MM/YYYY">
+
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Họ và tên
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="NO NAME">
+
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="min-width: 82px;">
+                                            Địa chỉ
+                                        </span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="min-width: 82px;">
+                                            SĐT
+                                        </span>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Email
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Email">
+
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Mức lương
+                                        </span>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Chức vụ
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Chức vụ">
+
+                                    </div>
+                                    <br />
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Mật khẩu
+                                        </span>
+                                        <input type="password" class="form-control" placeholder="Mật khẩu">
+
+                                    </div>
+
+
+
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-info pull-right" value="Lưu">
+                </div>
+            </div>
+        }
+        
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--Modal Chinh sưa thông tin-->
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+            <div class="modal-content" style="border-radius:5px;">
+                <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">CHỈNH SỬA THÔNG TIN NHÂN VIÊN</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="box" style="border: 2px solid #ccc;">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"> Mã Nhân Viên: NV0711</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Password
+                                        </span>
+                                        <input type="password" class="form-control" placeholder="">
+
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Họ và tên
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="NO NAME">
+
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="min-width: 82px;">
+                                            Địa chỉ
+                                        </span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="min-width: 82px;">
+                                            SĐT
+                                        </span>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Mức lương
+                                        </span>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" data-toggle="modal" data-target="#modal-successED">Cập nhật</button>
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--Modal Cảnh báo-->
+<div class="modal fade " id="modal-warning">
+    <div class="modal-dialog" style="width:500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #e85e6c; text-align: center; padding: 35px; border-radius: 5px 5px  0 0;">
+                <div class="icon-box" style="color: #fff; width: 80px; height: 80px;display: inline-block; border-radius: 50%; border: 5px solid #fff">
+                    <h4><i class="icon fa fa-remove" style="font-size: 58px; margin: -5px 0 0 0"></i></h4>
+                </div>
+                <button style="position: absolute; top: 15px;right: 15px; color: #fff;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 style="font-size: 30px;">Cảnh báo</h4>
+                <p>Dữ liệu sẽ bị xóa bỏ và không thể khôi phục lại.</p>
+                <p>Bạn có muốn tiếp tục?</p>
+                <button class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modal-success">Tiếp tục</button>
+                <button class="btn btn-danger" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--Modal Thành công Xóa-->
+<div class="modal fade " id="modal-success">
+    <div class="modal-dialog" style="width:500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #47c9a2; text-align: center; padding: 35px; border-radius: 5px 5px  0 0;">
+                <div class="icon-box" style="color: #fff; width: 80px; height: 80px;display: inline-block; border-radius: 50%; border: 5px solid #fff">
+                    <h4><i class="icon fa fa-check" style="font-size: 58px; margin: -5px 0 0 0"></i></h4>
+                </div>
+                <button style="position: absolute; top: 15px;right: 15px; color: #fff;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 style="font-size: 30px;">Hoàn tất</h4>
+                <p>Yêu cầu xóa hoàn tất.</p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--Modal Thành công tạo-->
+<div class="modal fade " id="modal-successCR">
+    <div class="modal-dialog" style="width:500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #47c9a2; text-align: center; padding: 35px; border-radius: 5px 5px  0 0;">
+                <div class="icon-box" style="color: #fff; width: 80px; height: 80px;display: inline-block; border-radius: 50%; border: 5px solid #fff">
+                    <h4><i class="icon fa fa-check" style="font-size: 58px; margin: -5px 0 0 0"></i></h4>
+                </div>
+                <button style="position: absolute; top: 15px;right: 15px; color: #fff;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 style="font-size: 30px;">Hoàn tất</h4>
+                <p>Một nhân viên mới được tạo với tài khoản và mật khẩu mặc định.</p>
+                <p>Account: E69966969</p>
+                <p>Password: 123456</p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--Modal Thành công tạo-->
+<div class="modal fade " id="modal-successED">
+    <div class="modal-dialog" style="width:500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #47c9a2; text-align: center; padding: 35px; border-radius: 5px 5px  0 0;">
+                <div class="icon-box" style="color: #fff; width: 80px; height: 80px;display: inline-block; border-radius: 50%; border: 5px solid #fff">
+                    <h4><i class="icon fa fa-check" style="font-size: 58px; margin: -5px 0 0 0"></i></h4>
+                </div>
+                <button style="position: absolute; top: 15px;right: 15px; color: #fff;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <h4 style="font-size: 30px;">Hoàn tất</h4>
+                <p>Thông tin nhân viên đã được cập nhật.</p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
