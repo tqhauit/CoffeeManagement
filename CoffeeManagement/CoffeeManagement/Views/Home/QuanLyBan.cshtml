@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyBan";
+}
+
+<div class="content-wrapper">
+    <section class="content-header" style="padding-top: 0">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    Quản lý bàn
+                    <small>tháng 1 năm 2019</small>
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group" style="margin-top: 20px;">
+                    <input type="text" name="q" class="form-control" placeholder="Nhập mã số bàn">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-block btn-info" style="margin-top: 20px;" data-toggle="modal" data-target="#modal-successCR">Thêm mới</button>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header  text-center with-border bg-aqua">
+                        <h3 class="box-title">TB001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body text-center">
+                        <img src="image/table.png" width="60%" />
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">Tình trạng: <span class="pull-right badge bg-red">Sửa chữa</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-successED"><i class="fa fa-retweet"></i></a>
+                        <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
+                    </div>
+                </div>
+                <!-- /.info-box -->
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>
+
+

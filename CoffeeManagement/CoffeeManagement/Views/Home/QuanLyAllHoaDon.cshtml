@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyAllHoaDon";
+}
+
+<div class="content-wrapper">
+    <section class="content-header" style="padding-top: 0">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Tổng quan
+                    <small>ngày 01 tháng 01</small>
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group" style="margin-top: 20px;">
+                    <input type="text" name="q" class="form-control" placeholder="Nhập mã hóa đơn/ số bàn">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-file-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">HÓA ĐƠN</span>
+                        <span class="info-box-number count" style="font-size: 25px;">200<small></small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-red"><i class="fa fa-file-text-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">ĐANG PHỤC VỤ</span>
+                        <span class="info-box-number count" style="font-size: 25px;">8</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">ĐÃ PHỤC VỤ</span>
+                        <span class="info-box-number count" style="font-size: 25px;">120</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-yellow"><i class="fa fa-money"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">TỔNG TIỀN TẠM TÍNH</span>
+                        <span class="info-box-number count" style="font-size: 25px;">20000000</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-2">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header with-border bg-yellow text-center">
+                        <h3 class="box-title ">OTP0000001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p class="lead">Bàn: <span class="pull-right">01</span></p>
+                        <p class="text-muted">Trạng thái: <span class="pull-right  text-yellow">Tiếp nhận</span></p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-warning" data-toggle="modal" data-target="#modal-view"><i class="fa  fa-info"></i></a>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-2">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header with-border bg-aqua text-center">
+                        <h3 class="box-title ">OTP0000001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p class="lead">Bàn: <span class="pull-right">01</span></p>
+                        <p class="text-muted">Trạng thái: <span class="pull-right  text-aqua">Pha chế</span></p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-view"><i class="fa  fa-info"></i></a>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-2">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header with-border bg-green text-center">
+                        <h3 class="box-title ">OTP0000001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p class="lead">Bàn: <span class="pull-right">01</span></p>
+                        <p class="text-muted">Trạng thái: <span class="pull-right  text-green">Hoàn tất</span></p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-success" data-toggle="modal" data-target="#modal-view"><i class="fa  fa-info"></i></a>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-2">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header with-border bg-red text-center">
+                        <h3 class="box-title ">OTP0000001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p class="lead">Bàn: <span class="pull-right">01</span></p>
+                        <p class="text-muted">Trạng thái: <span class="pull-right  text-red">Thanh toán</span></p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-danger" data-toggle="modal" data-target="#modal-view"><i class="fa  fa-info"></i></a>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>

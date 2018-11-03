@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyThanhToan";
+}
+
+<div class="content-wrapper">
+    <section class="content-header" style="padding-top: 0">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Hóa đơn
+                    <small>yêu cầu thanh toán</small>
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group" style="margin-top: 20px;">
+                    <input type="text" name="q" class="form-control" placeholder="Nhập mã hóa đơn/ số bàn">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="content">
+        <!-- Info boxes -->
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="box box-solid" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header with-border bg-red text-center">
+                        <h3 class="box-title ">OTP0000001</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p class="lead">Bàn: <span class="pull-right">01</span></p>
+                        <p class="text-muted">Trạng thái: <span class="pull-right text-red">Thanh toán</span></p>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-danger" data-toggle="modal" data-target="#modal-payment"><i class="fa  fa-info"></i></a>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>
+
+

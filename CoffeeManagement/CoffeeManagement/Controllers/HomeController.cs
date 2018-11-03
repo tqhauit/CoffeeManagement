@@ -24,14 +24,88 @@ namespace CoffeeManagement.Controllers
         {
             CoffeeShopDBEntities db = new CoffeeShopDBEntities();
             List<Employee> employeeList = db.Employees.ToList();
-            return View(employeeList);
+            UserViewModel viewModel = new UserViewModel();
+            viewModel.listEmployee = employeeList;
+            return View(viewModel);
         }
 
         public ActionResult QuanLyKhachHang()
         {
             CoffeeShopDBEntities db = new CoffeeShopDBEntities();
             List<Customer> customerList = db.Customers.ToList();
-            return View(customerList);
+            UserViewModel viewModel = new UserViewModel();
+            viewModel.listCustomer = customerList;
+            return View(viewModel);
+        }
+
+        public ActionResult QuanLyLoaiSP()
+        {
+            return View("QuanLyLoaiSP");
+        }
+
+        public ActionResult QuanLyKho()
+        {
+            return View("QuanLyKho");
+        }
+
+        public ActionResult QuanLyMenu()
+        {
+            return View("QuanLyMenu");
+        }
+
+        public ActionResult QuanLyVoucher()
+        {
+            return View("QuanLyVoucher");
+        }
+
+        public ActionResult QuanLyBan()
+        {
+            return View("QuanLyBan");
+        }
+
+        public ActionResult QuanLyNVTongQuan()
+        {
+            return View("QuanLyNVTongQuan");
+        }
+
+        public ActionResult QuanLyAllHoaDon()
+        {
+            return View("QuanLyAllHoaDon");
+        }
+
+        public ActionResult QuanLyTaoHoaDon()
+        {
+            return View("QuanLyTaoHoaDon");
+        }
+
+        public ActionResult QuanLyThanhToan()
+        {
+            return View("QuanLyThanhToan");
+        }
+
+        public ActionResult QuanLyPCTongQuan()
+        {
+            return View("QuanLyPCTongQuan");
+        }
+
+        public ActionResult QuanLyPCDaTiepNhan()
+        {
+            return View("QuanLyPCDaTiepNhan");
+        }
+
+        public ActionResult QuanLyPCSanPhamHet()
+        {
+            return View("QuanLyPCSanPhamHet");
+        }
+
+        public ActionResult QuanLyLichLamSapXep()
+        {
+            return View("QuanLyLichLamSapXep");
+        }
+        
+        public ActionResult QuanLyLichLamChinhSua()
+        {
+            return View("QuanLyLichLamChinhSua");
         }
     }
 }

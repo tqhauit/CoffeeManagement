@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1011,6 +1012,19 @@
     <Content Include="Views\Home\QuanLyTongQuan.cshtml" />
     <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
     <Content Include="Views\Home\QuanLyKhachHang.cshtml" />
+    <Content Include="Views\Home\QuanLyLoaiSP.cshtml" />
+    <Content Include="Views\Home\QuanLyKho.cshtml" />
+    <Content Include="Views\Home\QuanLyMenu.cshtml" />
+    <Content Include="Views\Home\QuanLyVoucher.cshtml" />
+    <Content Include="Views\Home\QuanLyNVTongQuan.cshtml" />
+    <Content Include="Views\Home\QuanLyAllHoaDon.cshtml" />
+    <Content Include="Views\Home\QuanLyTaoHoaDon.cshtml" />
+    <Content Include="Views\Home\QuanLyThanhToan.cshtml" />
+    <Content Include="Views\Home\QuanLyPCTongQuan.cshtml" />
+    <Content Include="Views\Home\QuanLyPCDaTiepNhan.cshtml" />
+    <Content Include="Views\Home\QuanLyPCSanPhamHet.cshtml" />
+    <Content Include="Views\Home\QuanLyLichLamSapXep.cshtml" />
+    <Content Include="Views\Home\QuanLyLichLamChinhSua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

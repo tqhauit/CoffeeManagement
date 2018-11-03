@@ -1,0 +1,239 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyLichLamSapXep";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>
+                    Lịch làm việc
+                    <small>tháng 1 năm 2019</small>
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group" style="margin-top: 20px;">
+                    <input type="date" name="q" class="form-control" placeholder="Chọn ngày tháng">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="box" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19">
+                    <div class="box-header with-border bg-green">
+                        <h3 class="box-title"><b>ĐỀ XUẤT</b></h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-center">MaNV</th>
+                                                <th class="text-center">Họ và Tên</th>
+                                                <th class="text-center">Bắt đầu</th>
+                                                <th class="text-center">Kết thúc</th>
+                                                <th class="text-center" style="width: 90px;">Chọn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-success" data-toggle="modal" data-target="#modal-add">
+                                                        <i class="fa fa-check"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-success" data-toggle="modal" data-target="#modal-add">
+                                                        <i class="fa fa-check"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="box" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="box-header bg-aqua with-border">
+                        <h3 class="box-title"><b>XEM TRƯỚC</b></h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-center">MaNV</th>
+                                                <th class="text-center">Họ và Tên</th>
+                                                <th class="text-center">Bắt đầu</th>
+                                                <th class="text-center">Kết thúc</th>
+                                                <th class="text-center" style="width: 90px;">Chỉnh sửa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">NV001</td>
+                                                <td class="text-center">NGUYEN HOANG PHONG</td>
+                                                <td class="text-center">07:00 AM</td>
+                                                <td class="text-center">12:00 AM</td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-social-icon btn-twitter" data-toggle="modal" data-target="#modal-FormLL">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer with-border text-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-accept">ÁP DỤNG</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+</footer>
+
+

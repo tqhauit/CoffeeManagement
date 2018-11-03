@@ -10,5 +10,11 @@ namespace CoffeeManagement.Models
         public List<Employee> listEmployee;
 
         public Employee employee;
+
+        public Customer customer;
+
+        public List<Customer> listCustomer;
+
+
     }
 }
