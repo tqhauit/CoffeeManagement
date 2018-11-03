@@ -1,4 +1,4 @@
-﻿@model List<CoffeeManagement.Models.Customer>
+﻿@model CoffeeManagement.Models.UserViewModel
 @{
     ViewBag.Title = "QuanLyKhachHang";
 }
@@ -29,8 +29,8 @@
     <section class="content">
         <div class="row">
             <div class="col-md-3">
-
-                @foreach (var c in Model)
+                
+                @foreach (var c in Model.listCustomer)
                 {
                     <!-- Widget: user widget style 1 -->
                     <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -40,7 +40,7 @@
                                 <img class="img-circle" src="~Content/image/avatar-blank.jpg" alt="User Avatar">
                             </div>
                             <!-- /.widget-user-image -->
-                            <h3 class="widget-user-username">KH0711</h3>
+                            <h3 class="widget-user-username">@c.CuID</h3>
                             <h5 class="widget-user-desc">@c.Name</h5>
                         </div>
                         <div class="box-footer no-padding">
