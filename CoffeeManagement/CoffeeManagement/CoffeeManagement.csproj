@@ -875,7 +875,9 @@
     <Content Include="Scripts\superfish.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1016,6 +1018,7 @@
     <Content Include="Views\Home\QuanLyKho.cshtml" />
     <Content Include="Views\Home\QuanLyMenu.cshtml" />
     <Content Include="Views\Home\QuanLyVoucher.cshtml" />
+    <Content Include="Views\Home\QuanLyBan.cshtml" />
     <Content Include="Views\Home\QuanLyNVTongQuan.cshtml" />
     <Content Include="Views\Home\QuanLyAllHoaDon.cshtml" />
     <Content Include="Views\Home\QuanLyTaoHoaDon.cshtml" />
@@ -1025,6 +1028,11 @@
     <Content Include="Views\Home\QuanLyPCSanPhamHet.cshtml" />
     <Content Include="Views\Home\QuanLyLichLamSapXep.cshtml" />
     <Content Include="Views\Home\QuanLyLichLamChinhSua.cshtml" />
+    <Content Include="Views\Warehouses\Create.cshtml" />
+    <Content Include="Views\Warehouses\Delete.cshtml" />
+    <Content Include="Views\Warehouses\Details.cshtml" />
+    <Content Include="Views\Warehouses\Edit.cshtml" />
+    <Content Include="Views\Warehouses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

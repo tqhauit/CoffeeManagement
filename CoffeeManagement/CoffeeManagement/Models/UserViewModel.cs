@@ -15,6 +15,15 @@ namespace CoffeeManagement.Models
 
         public List<Customer> listCustomer;
 
+        public List<Category> listCategory;
+
+        public Category category;
+
+        public List<Warehouse> listWarehouse;
+
+        public Warehouse warehouse;
+       
+        
 
     }
 }

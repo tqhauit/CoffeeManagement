@@ -1,4 +1,4 @@
-﻿
+﻿@model CoffeeManagement.Models.UserViewModel
 @{
     ViewBag.Title = "QuanLyLoaiSP";
 }
@@ -30,21 +30,24 @@
     </section>
     <section class="content">
         <div class="row">
+            @foreach (var c in Model.listCategory)
+            {
+
             <div class="col-md-3">
                 <!-- Widget: user widget style 1 -->
                 <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="box-header bg-yellow">
                         <!-- /.widget-user-image -->
-                        <h3 class="widget-user-username">COFFEE</h3>
+                        <h3 class="widget-user-username">@c.Name</h3>
                     </div>
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a href="#">Số sản phẩm: <span class="pull-right badge bg-yellow"> 20</span></a></li>
                             <li>
                                 <a href="#">
-                                    Cà phê là một loại thức uống được ủ từ hạt cà phê rang, lấy từ quả của cây cà phê. Các giống cây cà phê được bắt nguồn từ vùng nhiệt đới châu Phi và các vùng Madagascar, Comoros, Mauritius và Réunion trên Ấn Độ Dương.
-                                    </p>
+                                  <p>  
+                                      @c.Description
+                                    </p></a>
                             </li>
                         </ul>
                     </div>
@@ -55,31 +58,7 @@
                 </div>
                 <!-- /.widget-user -->
             </div>
-            <div class="col-md-3">
-                <!-- Widget: user widget style 1 -->
-                <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="box-header bg-aqua">
-                        <!-- /.widget-user-image -->
-                        <h3 class="widget-user-username">TRÀ SỮA</h3>
-                    </div>
-                    <div class="box-footer no-padding">
-                        <ul class="nav nav-stacked">
-                            <li><a href="#">Số sản phẩm: <span class="pull-right badge bg-aqua"> 20</span></a></li>
-                            <li>
-                                <a href="#">
-                                    Cà phê là một loại thức uống được ủ từ hạt cà phê rang, lấy từ quả của cây cà phê. Các giống cây cà phê được bắt nguồn từ vùng nhiệt đới châu Phi và các vùng Madagascar, Comoros, Mauritius và Réunion trên Ấn Độ Dương.
-                                    </p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="box-footer text-center">
-                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
-                    </div>
-                </div>
-                <!-- /.widget-user -->
-            </div>
+            }
         </div>
     </section>
 </div>

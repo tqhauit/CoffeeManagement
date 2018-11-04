@@ -1,85 +1,68 @@
-﻿
-@{
-    ViewBag.Title = "QuanLyKho";
-}
+﻿@model CoffeeManagement.Models.UserViewModel
 
-<div class="content-wrapper">
-    <section class="content-header" style="padding-top: 0">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>
-                    Quản lý Kho Hàng
-                    <small>tháng 1 năm 2019</small>
-                </h3>
-            </div>
-            <div class="col-md-3">
-                <div class="input-group" style="margin-top: 20px;">
-                    <input type="text" name="q" class="form-control" placeholder="Nhập mã/tên sản phẩm">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-block btn-info" style="margin-top: 20px;" data-toggle="modal" data-target="#modal-create">Thêm mới</button>
-            </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="row">
-            <div class="col-md-2">
-                <!-- Widget: user widget style 1 -->
-                <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="box-header" style="background: #47c9a2; color: #fff;">
-                        <!-- /.widget-user-image -->
-                        <h3 class="text-center">Bột Kem</h3>
-                    </div>
-                    <div class="box-footer no-padding">
-                        <ul class="nav nav-stacked">
-                            <li><a href="#">Số lượng: <span class="pull-right badge" style="background: #47c9a2;"> 20</span></a></li>
-                            <li><a href="#">Thời gian nhận: <span class="pull-right "> 15/2/2018</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="box-footer text-center">
-                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
-                    </div>
-                </div>
-                <!-- /.widget-user -->
-            </div>
-            <div class="col-md-2">
-                <!-- Widget: user widget style 1 -->
-                <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="box-header" style="background: #47c9a2; color: #fff;">
-                        <!-- /.widget-user-image -->
-                        <h3 class="text-center">Đường</h3>
-                    </div>
-                    <div class="box-footer no-padding">
-                        <ul class="nav nav-stacked">
-                            <li><a href="#">Số lượng: <span class="pull-right badge" style="background: #47c9a2;"> 30</span></a></li>
-                            <li><a href="#">Thời gian nhận: <span class="pull-right "> 15/2/2018</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="box-footer text-center">
-                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
-                    </div>
-                </div>
-                <!-- /.widget-user -->
-            </div>
-        </div>
-    </section>
-</div>
+    @{
+        ViewBag.Title = "QuanLyKho";
+    }
 
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+    <div class="content-wrapper">
+        <section class="content-header" style="padding-top: 0">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>
+                        Quản lý Kho Hàng
+                        <small>tháng 1 năm 2019</small>
+                    </h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group" style="margin-top: 20px;">
+                        <input type="text" name="q" class="form-control" placeholder="Nhập mã/tên sản phẩm">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-block btn-info" style="margin-top: 20px;" data-toggle="modal" data-target="#modal-create">Thêm mới</button>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="row">
+                @foreach (var c in Model.listWarehouse)
+                {
+                    <div class="col-md-2">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="box-header" style="background: #47c9a2; color: #fff;">
+                                <!-- /.widget-user-image -->
+                                <h3 class="text-center">@c.Name</h3>
+                            </div>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#">Số lượng: <span class="pull-right badge" style="background: #47c9a2;"> @c.Quatity</span></a></li>
+                                    <li><a href="#">Thời gian nhận: <span class="pull-right ">@c.UpdateTime</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="box-footer text-center">
+                                <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                    </div>
+                }
+            </div>
+        </section>
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-</footer>
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+        reserved.
+    </footer>
 

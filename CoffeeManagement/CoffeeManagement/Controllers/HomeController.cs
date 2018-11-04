@@ -1,4 +1,5 @@
-﻿using CoffeeManagement.Models;
+﻿
+using CoffeeManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,13 @@ using System.Web.Mvc;
 
 namespace CoffeeManagement.Controllers
 {
+   
+
     public class HomeController : AuthorizeController
     {
+        CoffeeShopDBEntities db = new CoffeeShopDBEntities();
+
+        UserViewModel viewModel = new UserViewModel();
         // GET: Home
         public ActionResult Index()
         {
@@ -22,30 +28,33 @@ namespace CoffeeManagement.Controllers
 
         public ActionResult QuanLyNhanVien()
         {
-            CoffeeShopDBEntities db = new CoffeeShopDBEntities();
+           
             List<Employee> employeeList = db.Employees.ToList();
-            UserViewModel viewModel = new UserViewModel();
             viewModel.listEmployee = employeeList;
             return View(viewModel);
         }
 
         public ActionResult QuanLyKhachHang()
         {
-            CoffeeShopDBEntities db = new CoffeeShopDBEntities();
+
             List<Customer> customerList = db.Customers.ToList();
-            UserViewModel viewModel = new UserViewModel();
             viewModel.listCustomer = customerList;
             return View(viewModel);
         }
 
         public ActionResult QuanLyLoaiSP()
         {
-            return View("QuanLyLoaiSP");
+            
+            List<Category> categoriesList = db.Categories.ToList();
+            viewModel.listCategory = categoriesList;
+            return View(viewModel);
         }
 
         public ActionResult QuanLyKho()
         {
-            return View("QuanLyKho");
+            List<Warehouse> warehousesList = db.Warehouses.ToList();
+            viewModel.listWarehouse = warehousesList;
+            return View(viewModel);
         }
 
         public ActionResult QuanLyMenu()
