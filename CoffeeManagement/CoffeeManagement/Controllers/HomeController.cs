@@ -64,7 +64,9 @@ namespace CoffeeManagement.Controllers
 
         public ActionResult QuanLyVoucher()
         {
-            return View("QuanLyVoucher");
+            List<Promotion> promotionsList = db.Promotions.ToList();
+            viewModel.listPromotion = promotionsList;
+            return View(viewModel);
         }
 
         public ActionResult QuanLyBan()
@@ -89,6 +91,7 @@ namespace CoffeeManagement.Controllers
 
         public ActionResult QuanLyThanhToan()
         {
+
             return View("QuanLyThanhToan");
         }
 

@@ -1,4 +1,4 @@
-﻿
+﻿@model CoffeeManagement.Models.UserViewModel
 @{
     ViewBag.Title = "QuanLyVoucher";
 }
@@ -29,6 +29,8 @@
     </section>
     <section class="content">
         <div class="row">
+            @foreach (var a in Model.listPromotion)
+            {
             <div class="col-md-3">
                 <!-- Widget: user widget style 1 -->
                 <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -36,16 +38,15 @@
                     <div class="widget-user-header bg-yellow text-center">
 
                         <!-- /.widget-user-image -->
-                        <h3 class="">KH0711</h3>
-                        <h5 class="">Giá trị: 15%</h5>
+                        <h3 class="">@a.Name</h3>
+                        <h5 class="">Giá trị: @a.Value%</h5>
                     </div>
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a href="#">Thời gian: <span class="pull-right"> 20/11 đến 25/11/2018</span></a></li>
+                            <li><a href="#">Thời gian: <span class="pull-right"> @a.StartTime đến @a.EndTime</span></a></li>
                             <li>
                                 <a href="#">
-                                    Thay vì thấp thỏm đợi quà, đợi hoa, tại sao con gái chúng mình không tự tặng cho bản thân những món quà mình thích nhân ngày 20/10 nhỉ?
-                                    Đến Ten Ren cuối tuần này để nhận ưu đãi đặc biệt mua 2 nước bất kỳ được nhận ngay 2 quai vải xinh xắn.
+                                   @a.Description
                                     <p></p>
                                 </a>
                             </li>
@@ -62,7 +63,7 @@
                 </div>
                 <!-- /.widget-user -->
             </div>
-
+            }
         </div>
     </section>
 </div>

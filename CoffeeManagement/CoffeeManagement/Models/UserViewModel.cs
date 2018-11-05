@@ -22,8 +22,14 @@ namespace CoffeeManagement.Models
         public List<Warehouse> listWarehouse;
 
         public Warehouse warehouse;
-       
-        
+
+        public Promotion Promotion;
+
+        public List<Promotion> listPromotion;
+
+        public Timekeeping timekeeping;
+
+        public List<Timekeeping> ListTimekeepings;
 
     }
 }
