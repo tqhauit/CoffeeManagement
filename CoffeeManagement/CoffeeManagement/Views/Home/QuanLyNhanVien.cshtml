@@ -1,5 +1,6 @@
 ﻿@model CoffeeManagement.Models.UserViewModel
 @{
+
     ViewBag.Title = "QuanLyNhanVien";
 }
 <div class="content-wrapper">
@@ -28,39 +29,68 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-md-3">
-                @foreach (var e in Model.listEmployee)
+
+            @foreach (var e in Model.listEmployee)
+            {
+
+                if (e.EID.Equals(Session["username"].ToString()) == false)
                 {
-                    <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-aqua">
-                            <div class="widget-user-image">
-                                <img class="img-circle" src="~/Content/image/avatar-blank.jpg" alt="User Avatar">
+                    <div class="col-md-4">
+                        <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-aqua">
+                                <div class="widget-user-image">
+                                    <img class="img-circle" src="~/Content/image/avatar-blank.jpg" alt="User Avatar">
+                                </div>
+                                <!-- /.widget-user-image -->
+                                <h3 class="widget-user-username">@e.EID</h3>
+                                <h5 class="widget-user-desc">@e.Name</h5>
                             </div>
-                            <!-- /.widget-user-image -->
-                            <h3 class="widget-user-username">@e.EID</h3>
-                            <h5 class="widget-user-desc">@e.Name</h5>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#">Địa chỉ: <span class="pull-right">@e.Address</span></a></li>
+                                    <li><a href="#">SĐT: <span class="pull-right">@e.Tel</span></a></li>
+                                    <li><a href="#">Lương cơ bản: <span class="pull-right">@e.Salary đ</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="box-footer text-center">
+                                <a id="chinhsua-@e.EID.Trim()" class="chinhsua btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
+                                @{
+                                    bool? check = false;
+
+                                    foreach (var f in Model.listAccount)
+                                    {
+                                        if (f.Username.ToString().Trim().Equals(e.EID.ToString().Trim()))
+                                        {
+                                            check = f.Status;
+                                        }
+
+                                    }
+                                    if (check == true)
+                                    {
+                                        <a id="eidt-@e.EID.Trim()" class="delete btn btn-social-icon btn-google" data-toggle="modal"><i class="fa fa-remove"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a id="eidt-@e.EID.Trim()" class="delete btn btn-social-icon btn-outline-success" data-toggle="modal"><i class="fa fa-check"></i></a>
+                                    }
+                                }
+
+
+                            </div>
                         </div>
-                        <div class="box-footer no-padding">
-                            <ul class="nav nav-stacked">
-                                <li><a href="#">Địa chỉ: <span class="pull-right">@e.Address</span></a></li>
-                                <li><a href="#">SĐT: <span class="pull-right">@e.Tel</span></a></li>
-                                <li><a href="#">Lương cơ bản: <span class="pull-right">@e.Salary đ</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="box-footer text-center">
-                            <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
-                        </div>
+                        <!-- /.widget-user -->
                     </div>
-                <!-- /.widget-user -->
                 }
-                <!-- Widget: user widget style 1 -->
-                
 
-               
+            }
+            <!-- Widget: user widget style 1 -->
 
-            </div>
+            <button id="success-add-modal" style="display:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-successCR">Open Modal</button>
+            <button id="warning-delete-modal" style="display:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-warning">Open Modal</button>
+            <button id="success-delete-modal" style="display:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-success">Open Modal</button>
+            <button id="success-edit-modal" style="display:none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal-successED">Open Modal</button>
+            
         </div>
     </section>
 </div>
@@ -75,109 +105,102 @@
 <!--Modal them moi-->
 <div class="modal fade" id="modal-create">
     <div class="modal-dialog" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-        @using (Html.BeginForm("AddEmployee", "Home", FormMethod.Post))
-        {
-            <div class="modal-content" style="border-radius:5px;">
-                <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">THÊM MỚI NHÂN VIÊN</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="box" style="border: 2px solid #ccc;">
-
-                                <div class="box-body">
-
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Họ và tên
-                                        </span>
-                                        @Html.TextBoxFor(model => model.employee.Name,new { @class = "form-control",placeholder="Họ và tên" })
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Ngày sinh
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="DD/MM/YYYY">
-
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Họ và tên
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="NO NAME">
-
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="min-width: 82px;">
-                                            Địa chỉ
-                                        </span>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="min-width: 82px;">
-                                            SĐT
-                                        </span>
-                                        <input type="tel" class="form-control">
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Email
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Email">
-
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Mức lương
-                                        </span>
-                                        <input type="number" class="form-control">
-                                    </div>
-                                    <br />
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Chức vụ
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="Chức vụ">
-
-                                    </div>
-                                    <br />
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Mật khẩu
-                                        </span>
-                                        <input type="password" class="form-control" placeholder="Mật khẩu">
-
-                                    </div>
 
 
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">THÊM MỚI NHÂN VIÊN</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box" style="border: 2px solid #ccc;">
+
+                            <div class="box-body">
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Họ và tên
+                                    </span>
+                                    <input type="text" id="hovaten" class="form-control" placeholder="Họ và tên">
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Ngày sinh
+                                    </span>
+                                    <input type="text" id="ngaysinh" class="form-control" placeholder="DD/MM/YYYY">
 
                                 </div>
-                                <!-- /.box-body -->
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="min-width: 82px;">
+                                        Địa chỉ
+                                    </span>
+                                    <input type="text" id="diachi" class="form-control">
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="min-width: 82px;">
+                                        SĐT
+                                    </span>
+                                    <input id="sdt" type="tel" class="form-control">
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Email
+                                    </span>
+                                    <input id="email" type="text" class="form-control" placeholder="Email">
+
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Mức lương
+                                    </span>
+                                    <input id="mucluong" type="number" class="form-control">
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Chức vụ
+                                    </span>
+                                    <input id="chucvu" type="text" class="form-control" placeholder="Chức vụ">
+
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Mật khẩu
+                                    </span>
+                                    <input id="matkhau" type="password" class="form-control" placeholder="Mật khẩu">
+
+                                </div>
+
+
 
                             </div>
+                            <!-- /.box-body -->
+
                         </div>
                     </div>
+                </div>
 
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-info pull-right" value="Lưu">
-                </div>
             </div>
-        }
-        
+            <div class="modal-footer">
+                <input id="addNhanVien" type="submit" class="btn btn-info pull-right" value="Lưu">
+            </div>
+        </div>
+
+
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
@@ -185,75 +208,76 @@
 <!--Modal Chinh sưa thông tin-->
 <div class="modal fade" id="modal-edit">
     <div class="modal-dialog" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-            <div class="modal-content" style="border-radius:5px;">
-                <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">CHỈNH SỬA THÔNG TIN NHÂN VIÊN</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="box" style="border: 2px solid #ccc;">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"> Mã Nhân Viên: NV0711</h3>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Password
-                                        </span>
-                                        <input type="password" class="form-control" placeholder="">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="background: #00c0ef; color: #fff; font-weight: bold; border-radius: 5px 5px 0 0 ">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">CHỈNH SỬA THÔNG TIN NHÂN VIÊN</h4>
+            </div>
 
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Họ và tên
-                                        </span>
-                                        <input type="text" class="form-control" placeholder="NO NAME">
-
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="min-width: 82px;">
-                                            Địa chỉ
-                                        </span>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="min-width: 82px;">
-                                            SĐT
-                                        </span>
-                                        <input type="tel" class="form-control">
-                                    </div>
-                                    <br>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            Mức lương
-                                        </span>
-                                        <input type="number" class="form-control">
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-circle" src="image/avatar-blank.jpg" style="margin-top: 35px;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box" style="border: 2px solid #ccc;">
+                            <div class="box-header with-border">
+                                <h3 id="manhanvien" class="box-title"> Mã Nhân Viên: NV0711</h3>
                             </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Chức vụ
+                                    </span>
+                                    <input id="edit-chucvu" type="text" class="form-control" placeholder="Chức vụ">
+
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Họ và tên
+                                    </span>
+                                    <input id="edit-hovaten" type="text" class="form-control" placeholder="NO NAME">
+
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="min-width: 82px;">
+                                        Địa chỉ
+                                    </span>
+                                    <input id="edit-diachi" type="text" class="form-control">
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="min-width: 82px;">
+                                        SĐT
+                                    </span>
+                                    <input id="edit-sdt" type="tel" class="form-control">
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        Mức lương
+                                    </span>
+                                    <input id="edit-mucluong" type="number" class="form-control">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
                         </div>
                     </div>
+                </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info pull-right" data-dismiss="modal" data-toggle="modal" data-target="#modal-successED">Cập nhật</button>
-                </div>
             </div>
+            <div class="modal-footer">
+                <button id="capnhat" type="submit" class="btn btn-info pull-right" data-dismiss="modal" data-toggle="modal">Cập nhật</button>
+            </div>
+        </div>
         <!-- /.modal-content -->
-        
+
     </div>
     <!-- /.modal-dialog -->
 </div>
@@ -270,8 +294,9 @@
             <div class="modal-body text-center">
                 <h4 style="font-size: 30px;">Cảnh báo</h4>
                 <p>Dữ liệu sẽ bị xóa bỏ và không thể khôi phục lại.</p>
+                <input type="text" style="display:none" id="warning-delete" />
                 <p>Bạn có muốn tiếp tục?</p>
-                <button class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modal-success">Tiếp tục</button>
+                <button id="delete-success" class="btn btn-success" data-dismiss="modal" data-toggle="modal">Tiếp tục</button>
                 <button class="btn btn-danger" data-dismiss="modal">Hủy</button>
             </div>
         </div>
@@ -299,7 +324,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!--Modal Thành công tạo-->
-<div class="modal fade " id="modal-successCR">
+<div class="modal fade" id="modal-successCR">
     <div class="modal-dialog" style="width:500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
         <div class="modal-content" style="border-radius:5px;">
             <div class="modal-header" style="background: #47c9a2; text-align: center; padding: 35px; border-radius: 5px 5px  0 0;">

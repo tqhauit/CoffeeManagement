@@ -9,6 +9,8 @@ namespace CoffeeManagement.Models
     {
         public List<Employee> listEmployee;
 
+        public List<Account> listAccount;
+
         public Employee employee;
 
         public Customer customer;

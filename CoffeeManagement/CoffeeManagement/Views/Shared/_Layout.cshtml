@@ -28,6 +28,197 @@
     <script src="~/Content/bower_components/chart.js/Chart.js"></script>
     <script src="~/Content/dist/js/pages/dashboard2.js"></script>
     <script src="~/Content/dist/js/demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#addNhanVien').click(function () {
+                var hovaten = $('#hovaten').val().toString().trim();
+                var ngaysinh = $('#ngaysinh').val().toString().trim();
+                var diachi = $('#diachi').val().toString().trim();
+                var sdt = $('#sdt').val().toString().trim();
+                var email = $('#email').val().toString().trim();
+                var mucluong = $('#mucluong').val().toString().trim();
+                var chucvu = $('#chucvu').val().toString().trim();
+                var matkhau = $('#matkhau').val().toString().trim();
+                if (hovaten == "" || ngaysinh == "" || diachi == "" || sdt == "" || email == "" || mucluong == "" || chucvu == "" || matkhau == "") {
+                    alert("Vui lòng nhập đầy đủ thông tin nhân viên");
+                    return ;
+                }
+
+                employee = {
+                    'hovaten': hovaten,
+                    'ngaysinh': ngaysinh,
+                    'diachi': diachi,
+                    'sdt': sdt,
+                    'email': email,
+                    'mucluong': mucluong,
+                    'chucvu': chucvu,
+                    'matkhau': matkhau
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/AddEmployee",
+                    data: JSON.stringify(employee),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.msg == "success") {
+                            $(".close").click();
+                            $("#success-add-modal").click();
+                            setTimeout(function () {
+                                location.reload();
+
+                            }, 3000);
+                        }
+                        else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("Fail Request")
+                    }
+                });  
+            }); 
+
+
+            $(".delete").click(function () {
+                $("#warning-delete-modal").click();
+                $("#warning-delete").attr('value',this.id);
+            });
+
+            $("#delete-success").click(function () {
+                var id = $("#warning-delete").attr('value').replace("eidt-", "").toString();
+                if (id == "") {
+                    alert("Không thể xóa");
+                    return;
+                }
+
+                data = {
+                    'id': id,
+                };
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/DeleteEmployee",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.msg == "success") {
+                            $(".close").click();
+                            $("#success-delete-modal").click();
+                            setTimeout(function () {
+                                location.reload();
+
+                            }, 1000);
+                        }
+                        else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("Fail Request");
+                    }
+                });  
+
+                
+            });
+
+
+
+            $(".create-loaisp").click(function () {
+                var tenloai = $("#tenloai").val().toString();
+                var mieuta = $("#mieuta").val().toString();
+                if (tenloai == "" || mieuta == "") {
+                    alert("Điền đầy đủ thông tin");
+                    return;
+                }
+
+                data = {
+                    'tenloai': tenloai,
+                    'mieuta': mieuta
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/AddProduct",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.msg == "success") {
+                            $(".close").click();
+                            $("#success-add-modal").click();
+                            setTimeout(function () {
+                                location.reload();
+
+                            }, 3000);
+                        }
+                        else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("Fail Request");
+                    }
+                });  
+            });
+
+            $(".chinhsua").click(function () {
+                $("#manhanvien").text("Mã Nhân Viên: " + this.id.toString().replace("chinhsua-", ""));
+                
+            });
+
+            $("#capnhat").click(function () {
+                var chucvu = $("#edit-chucvu").val().toString().trim();
+                var hovaten = $("#edit-hovaten").val().toString().trim();
+                var diachi = $("#edit-diachi").val().toString().trim();
+                var sdt = $("#edit-sdt").val().toString().trim();
+                var mucluong = $("#edit-mucluong").val().toString().trim();
+                var id = $("#manhanvien").text().toString().trim().toString().replace("Mã Nhân Viên: ", "").trim();
+
+                if (chucvu == "" || hovaten == "" || diachi == "" || sdt == "" || mucluong == "") {
+                    alert("Vui lòng nhập đầy đủ thông tin");
+                    return;
+                }
+
+                data = {
+                    'id': id,
+                    'chucvu': chucvu,
+                    'hovaten': hovaten,
+                    'diachi': diachi,
+                    'sdt': sdt,
+                    'mucluong': mucluong
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/EditEmployee",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.msg == "success") {
+                            $(".close").click();
+                            $("#success-edit-modal").click();
+                            setTimeout(function () {
+                                location.reload();
+
+                            }, 2000);
+                        }
+                        else {
+                            alert(data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("Fail Request");
+                    }
+                });  
+            });
+        });
+        
+    </script>
 </head>
 <body class="skin-blue sidebar-collapse sidebar-mini">
     <div class="wrapper">

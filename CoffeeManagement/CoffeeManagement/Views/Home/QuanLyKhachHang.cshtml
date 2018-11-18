@@ -28,38 +28,40 @@
     </section>
     <section class="content">
         <div class="row">
+
+
+            @foreach (var c in Model.listCustomer)
+            {
             <div class="col-md-3">
-                
-                @foreach (var c in Model.listCustomer)
-                {
-                    <!-- Widget: user widget style 1 -->
-                    <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-yellow">
-                            <div class="widget-user-image">
-                                <img class="img-circle" src="~Content/image/avatar-blank.jpg" alt="User Avatar">
-                            </div>
-                            <!-- /.widget-user-image -->
-                            <h3 class="widget-user-username">@c.CuID</h3>
-                            <h5 class="widget-user-desc">@c.Name</h5>
+                <!-- Widget: user widget style 1 -->
+                <div class="box box-widget widget-user-2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-yellow">
+                        <div class="widget-user-image">
+                            <img class="img-circle" src="~/Content/image/avatar-blank.jpg" alt="User Avatar">
                         </div>
-                        <div class="box-footer no-padding">
-                            <ul class="nav nav-stacked">
-                                <li><a href="#">Ngày sinh: <span class="pull-right">@c.Birthday</span></a></li>
-                                <li><a href="#">SĐT: <span class="pull-right">@c.Tel</span></a></li>
-                                <li><a href="#">Email: <span class="pull-right">@c.Email</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="box-footer text-center">
-                            <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
-                        </div>
+                        <!-- /.widget-user-image -->
+                        <h3 class="widget-user-username">@c.CuID</h3>
+                        <h5 class="widget-user-desc">@c.Name</h5>
                     </div>
-                <!-- /.widget-user -->
-                }
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">Ngày sinh: <span class="pull-right">@c.Birthday</span></a></li>
+                            <li><a href="#">SĐT: <span class="pull-right">@c.Tel</span></a></li>
+                            <li><a href="#">Email: <span class="pull-right">@c.Email</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="box-footer text-center">
+                        <a class="btn btn-social-icon btn-info" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></a>
+                        <a class="btn btn-social-icon btn-google" data-toggle="modal" data-target="#modal-warning"><i class="fa  fa-remove"></i></a>
+                    </div>
+                </div>
+            </div>
+                    <!-- /.widget-user -->
+        }
+
                 
             </div>
-        </div>
     </section>
 </div>
 
@@ -70,5 +72,5 @@
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
 </footer>
-</div>
+
 

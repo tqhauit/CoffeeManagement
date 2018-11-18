@@ -37,11 +37,12 @@ namespace CoffeeManagement.Controllers
                 if(x == true)
                 {
                     var a = db.Accounts.Find(accout.Username);
+                    var e = db.Employees.Find(a.Username);
                     if(a.Status == true)
                     {
-                        Session["fullname"] = a.Employee.Name;
+                        Session["fullname"] = e.Name.ToString();
                         Session["username"] = a.Username;
-                        Session["position"] = a.Employee.Position;
+                        Session["position"] = e.Position.ToString();
                         return RedirectToAction("Index", "Home");
                     }
                 }
